@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		239BEEDE2343150F009709E3 /* CellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239BEEDD2343150F009709E3 /* CellData.swift */; };
+		239BEF002349867C009709E3 /* CellList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239BEEFF2349867C009709E3 /* CellList.swift */; };
+		23D6EF8B23430D0F00A65120 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D6EF8A23430D0F00A65120 /* PhotoCell.swift */; };
 		46F1B4A4234150FA00DF2896 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F1B4A3234150FA00DF2896 /* AppDelegate.swift */; };
 		46F1B4A6234150FA00DF2896 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F1B4A5234150FA00DF2896 /* SceneDelegate.swift */; };
 		46F1B4A8234150FA00DF2896 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F1B4A7234150FA00DF2896 /* ViewController.swift */; };
@@ -17,6 +20,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		239BEEDD2343150F009709E3 /* CellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellData.swift; sourceTree = "<group>"; };
+		239BEEFF2349867C009709E3 /* CellList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellList.swift; sourceTree = "<group>"; };
+		23D6EF8A23430D0F00A65120 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		46F1B4A0234150FA00DF2896 /* MercuryBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MercuryBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46F1B4A3234150FA00DF2896 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46F1B4A5234150FA00DF2896 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,8 +69,11 @@
 				46F1B4A5234150FA00DF2896 /* SceneDelegate.swift */,
 				46F1B4A7234150FA00DF2896 /* ViewController.swift */,
 				46F1B4A9234150FA00DF2896 /* Main.storyboard */,
+				23D6EF8A23430D0F00A65120 /* PhotoCell.swift */,
 				46F1B4AC234150FC00DF2896 /* Assets.xcassets */,
 				46F1B4AE234150FC00DF2896 /* LaunchScreen.storyboard */,
+				239BEEDD2343150F009709E3 /* CellData.swift */,
+				239BEEFF2349867C009709E3 /* CellList.swift */,
 				46F1B4B1234150FC00DF2896 /* Info.plist */,
 			);
 			path = MercuryBrowser;
@@ -142,9 +151,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23D6EF8B23430D0F00A65120 /* PhotoCell.swift in Sources */,
 				46F1B4A8234150FA00DF2896 /* ViewController.swift in Sources */,
 				46F1B4A4234150FA00DF2896 /* AppDelegate.swift in Sources */,
+				239BEEDE2343150F009709E3 /* CellData.swift in Sources */,
 				46F1B4A6234150FA00DF2896 /* SceneDelegate.swift in Sources */,
+				239BEF002349867C009709E3 /* CellList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,12 +301,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 35BJ4Z654K;
 				INFOPLIST_FILE = MercuryBrowser/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.me.MercuryBrowser;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mercurybrowser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -306,12 +319,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 35BJ4Z654K;
 				INFOPLIST_FILE = MercuryBrowser/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.me.MercuryBrowser;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mercurybrowser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
