@@ -12,6 +12,8 @@ class ViewController: UIViewController {
     
     let images = [UIImage(named: "mercury"), UIImage(named: "freddy")]
     let urlString = "https://raw.githubusercontent.com/rmirabelli/mercuryserver/master/mercury.json"
+    var cellList = CellList(mercury: [])
+    let imageService = ImageService()
 
  
     
@@ -29,20 +31,25 @@ class ViewController: UIViewController {
             let request = URLRequest(url: url)
             let session = URLSession(configuration: .ephemeral)
             let task = session.dataTask(with: request) {(data, response, error) in
-                //the data type just handles blobs of data
-                let cellList = try! JSONDecoder().decode(CellList.self, from: data!)
-                for cell in cellList.mercury{
-                    print(cell.url)
-
+             
+                self.cellList = try! JSONDecoder().decode(CellList.self, from: data!)
+           
+                print(self.cellList.mercury.count)
+                
+                DispatchQueue.main.sync {
+                    self.tableView.reloadData()
                 }
-          
+                
             }
             
             task.resume()
         }
-
+        
+        
+        
 
     }
+    
 
 
 }
@@ -52,21 +59,36 @@ class ViewController: UIViewController {
 
 extension ViewController:UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return images.count
+        return self.cellList.mercury.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoCell")!
-        let image = images[indexPath.item]
+        let imageURL = URL(string: self.cellList.mercury[indexPath.item].url)
         
+        let nameLabelText = self.cellList.mercury[indexPath.item].name
+        let typeLabelText = self.cellList.mercury[indexPath.item].type
+      
         
-        
-        if let photoCell = cell as? PhotoCell{
-            photoCell.cellImage.image = image
-        }
 
+
+        if let photoCell = cell as? PhotoCell{
+            imageService.getImage(url: imageURL!){ (image) -> Void in
+                let photoImage = image
+                DispatchQueue.main.async {
+                    photoCell.cellImage.image = photoImage
+                    photoCell.nameLabel.text = nameLabelText
+                    photoCell.typeLabel.text = typeLabelText
+           
+                }
+               
+                
+            }
+        }
         
+
+
   
         return cell
         
