@@ -12,21 +12,15 @@ struct ImageService{
     
     let imageCache = NSCache<NSString, UIImage>()
     
+    //get image based on URL, either from cache or the internet
     func getImage(url: URL, completion: @escaping ((UIImage) -> Void)) {
-        // download the image, and call the completion with the url and image.
-        // the cell can then verify that the image being returned is the one
-        // requested.
-        // you may even keep a dictionary of results, and then call the completion
-        // with an entry from that dictionary, if one exists, otherwise make the
-        // network call and store its result in the dictionary as well as calling
-        // the completion. This would allow the _second_ call for any image to not
-        // perform a network operation!
-
+        //If the image already exists, use the cached version
         if let cachedImage = imageCache.object(forKey: url.absoluteString as NSString) {
                   completion(cachedImage)
 
         }
         
+        //If not, we need to get it from the network
         else{
             let session = URLSession(configuration: .ephemeral)
             let task = session.dataTask(with: url){

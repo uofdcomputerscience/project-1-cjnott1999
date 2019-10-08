@@ -10,21 +10,16 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let images = [UIImage(named: "mercury"), UIImage(named: "freddy")]
     let urlString = "https://raw.githubusercontent.com/rmirabelli/mercuryserver/master/mercury.json"
     var cellList = CellList(mercury: [])
     let imageService = ImageService()
 
- 
-    
-    
-    
     @IBOutlet weak var tableView: UITableView!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+   
         tableView.dataSource = self
         if let url = URL(string: urlString){
             
@@ -39,22 +34,11 @@ class ViewController: UIViewController {
                 DispatchQueue.main.sync {
                     self.tableView.reloadData()
                 }
-                
             }
-            
             task.resume()
         }
-        
-        
-        
-
     }
-    
-
-
 }
-
-    
 
 
 extension ViewController:UITableViewDataSource{
@@ -70,26 +54,21 @@ extension ViewController:UITableViewDataSource{
         let nameLabelText = self.cellList.mercury[indexPath.item].name
         let typeLabelText = self.cellList.mercury[indexPath.item].type
       
-        
-
+    
 
         if let photoCell = cell as? PhotoCell{
             imageService.getImage(url: imageURL!){ (image) -> Void in
-                let photoImage = image
+                
                 DispatchQueue.main.async {
+                    let photoImage = image
                     photoCell.cellImage.image = photoImage
                     photoCell.nameLabel.text = nameLabelText
                     photoCell.typeLabel.text = typeLabelText
            
                 }
-               
                 
             }
         }
-        
-
-
-  
         return cell
         
         
