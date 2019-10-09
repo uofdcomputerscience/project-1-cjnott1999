@@ -57,10 +57,11 @@ extension ViewController:UITableViewDataSource{
     
 
         if let photoCell = cell as? PhotoCell{
-            imageService.getImage(url: imageURL!){ (image) -> Void in
+            imageService.getImage(url: imageURL!){ (image, url) -> Void in
                 
                 DispatchQueue.main.async {
                     let photoImage = image
+                    photoCell.cellImage.image = nil
                     photoCell.cellImage.image = photoImage
                     photoCell.nameLabel.text = nameLabelText
                     photoCell.typeLabel.text = typeLabelText

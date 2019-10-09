@@ -13,10 +13,10 @@ struct ImageService{
     let imageCache = NSCache<NSString, UIImage>()
     
     //get image based on URL, either from cache or the internet
-    func getImage(url: URL, completion: @escaping ((UIImage) -> Void)) {
+    func getImage(url: URL, completion: @escaping ((UIImage, URL) -> Void)) {
         //If the image already exists, use the cached version
         if let cachedImage = imageCache.object(forKey: url.absoluteString as NSString) {
-                  completion(cachedImage)
+                  completion(cachedImage, url)
 
         }
         
@@ -29,7 +29,7 @@ struct ImageService{
                 if  let data = data {
                     let image = UIImage(data: data)
                     self.imageCache.setObject(image!, forKey: url.absoluteString as NSString)
-                    completion(image!)
+                    completion(image!, url)
        
                 }
             }
